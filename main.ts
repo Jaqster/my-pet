@@ -11,8 +11,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let projectile: Sprite = null
 let mySprite: Sprite = null
-scene.setBackgroundColor(9)
-let pet = game.askForString("Do you want a puppy or a kitty?", 12, false)
+scene.setBackgroundColor(14)
+let pet = game.askForString("Do you want a puppy or a kitty?")
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -48,7 +48,7 @@ if (pet == "puppy") {
         . . . f 5 f f f 5 f f 5 f . . . 
         . . . f f . . f f . . f f . . . 
         `)
-} else {
+} else if (pet == "kitty") {
     mySprite.setImage(img`
         e e e . . . . e e e . . . . 
         c d d c . . c d d c . . . . 
@@ -64,6 +64,25 @@ if (pet == "puppy") {
         . f d d d d d b d d f f f . 
         . f d f f f d f f d f . . . 
         . f f . . f f . . f f . . . 
+        `)
+} else {
+    mySprite.setImage(img`
+        . . . . f f f f f . . . . . . . 
+        . . . f e e e e e f . . . . . . 
+        . . f d d d d e e e f . . . . . 
+        . c d f d d f d e e f f . . . . 
+        . c d f d d f d e e d d f . . . 
+        c d e e d d d d e e b d c . . . 
+        c d d d d c d d e e b d c . f f 
+        c c c c c d d d e e f c . f e f 
+        . f d d d d d e e f f . . f e f 
+        . . f f f f f e e e e f . f e f 
+        . . . . f e e e e e e e f f e f 
+        . . . f e f f e f e e e e f f . 
+        . . . f e f f e f e e e e f . . 
+        . . . f d b f d b f f e f . . . 
+        . . . f d d c d d b b d f . . . 
+        . . . . f f f f f f f f f . . . 
         `)
 }
 controller.moveSprite(mySprite)
@@ -92,22 +111,22 @@ info.setScore(0)
 info.setLife(3)
 game.onUpdateInterval(1000, function () {
     projectile = sprites.createProjectileFromSide(img`
-        . . 2 2 b b b b b . . . . . . . 
-        . 2 b 4 4 4 4 4 4 b . . . . . . 
-        2 2 4 4 4 4 d d 4 4 b . . . . . 
-        2 b 4 4 4 4 4 4 d 4 b . . . . . 
-        2 b 4 4 4 4 4 4 4 d 4 b . . . . 
-        2 b 4 4 4 4 4 4 4 4 4 b . . . . 
-        2 b 4 4 4 4 4 4 4 4 4 e . . . . 
-        2 2 b 4 4 4 4 4 4 4 b e . . . . 
-        . 2 b b b 4 4 4 b b b e . . . . 
-        . . e b b b b b b b e e . . . . 
-        . . . e e b 4 4 b e e e b . . . 
-        . . . . . e e e e e e b d b b . 
-        . . . . . . . . . . . b 1 1 1 b 
-        . . . . . . . . . . . c 1 d d b 
-        . . . . . . . . . . . c 1 b c . 
-        . . . . . . . . . . . . c c . . 
+        . . . . . . 2 2 2 2 . . . . . . 
+        . . . . 2 2 3 3 3 3 2 e . . . . 
+        . . . 2 3 d 1 1 d d 3 2 e . . . 
+        . . 2 3 1 d 3 3 3 d d 3 e . . . 
+        . 2 3 1 3 3 3 3 3 d 1 3 b e . . 
+        . 2 1 d 3 3 3 3 d 3 3 1 3 b b . 
+        2 3 1 d 3 3 1 1 3 3 3 1 3 4 b b 
+        2 d 3 3 d 1 3 1 3 3 3 1 3 4 4 b 
+        2 d 3 3 3 1 3 1 3 3 3 1 b 4 4 e 
+        2 d 3 3 3 1 1 3 3 3 3 1 b 4 4 e 
+        e d 3 3 3 3 d 3 3 3 d d b 4 4 e 
+        e d d 3 3 3 d 3 3 3 1 3 b 4 b e 
+        e 3 d 3 3 1 d d 3 d 1 b b e e . 
+        . e 3 1 1 d d 1 1 1 b b e e e . 
+        . . e 3 3 3 3 3 3 b e e e e . . 
+        . . . e e e e e e e e e e . . . 
         `, 50, 0)
     projectile.setPosition(0, randint(0, 120))
 })
