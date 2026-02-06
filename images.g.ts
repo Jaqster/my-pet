@@ -38,5 +38,12 @@ e 5 4 4 5 5 5 5 5 5 4 4 5 e . .
         return null;
     })
 
+    helpers._registerFactory("json", function(name: string) {
+        switch(helpers.stringTrim(name)) {
+
+        }
+        return null;
+    })
+
 }
 // Auto-generated code. Do not edit.

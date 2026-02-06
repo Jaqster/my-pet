@@ -11,7 +11,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let projectile: Sprite = null
 let mySprite: Sprite = null
-scene.setBackgroundColor(14)
+scene.setBackgroundColor(3)
 let pet = game.askForString("Do you want a puppy or a kitty?")
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
